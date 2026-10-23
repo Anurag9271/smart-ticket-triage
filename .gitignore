@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Model checkpoints and downloaded data
+models/*
+!models/.gitkeep
+chroma_db/
+*.sqlite3
+*.db
+
+# Local/private datasets
+data/*
+!data/.gitkeep
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
