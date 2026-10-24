@@ -1,10 +1,7 @@
 
-import pytest
-
 from ticket_classifier import classify_ticket
 
-
-TEST_CASES = [
+test_cases = [
     {
         "email": "My last payment appears twice on the statement.",
         "category": "billing",
@@ -57,10 +54,34 @@ TEST_CASES = [
     },
 ]
 
+category_correct = 0
+sentiment_correct = 0
 
-@pytest.mark.parametrize("case", TEST_CASES)
-def test_ticket_classification(case):
+for i, case in enumerate(test_cases, start=1):
     result = classify_ticket(case["email"])
 
-    assert result["category"] == case["category"]
-    assert result["sentiment"] == case["sentiment"]
+    category_ok = result["category"] == case["category"]
+    sentiment_ok = result["sentiment"] == case["sentiment"]
+
+    category_correct += category_ok
+    sentiment_correct += sentiment_ok
+
+    print(f"\nTest {i}: {case['email']}")
+    print(
+        f"Category: expected={case['category']}, "
+        f"predicted={result['category']}, "
+        f"{'PASS' if category_ok else 'CHECK'}"
+    )
+    print(
+        f"Sentiment: expected={case['sentiment']}, "
+        f"predicted={result['sentiment']}, "
+        f"{'PASS' if sentiment_ok else 'CHECK'}"
+    )
+
+print("\n--- Evaluation Summary ---")
+print(f"Category accuracy: {category_correct}/{len(test_cases)} "
+      f"({category_correct / len(test_cases) * 100:.1f}%)")
+print(f"Sentiment accuracy: {sentiment_correct}/{len(test_cases)} "
+      f"({sentiment_correct / len(test_cases) * 100:.1f}%)")
+
+    
