@@ -20,6 +20,7 @@ def classify_urgency(email: str) -> str:
         "please explain",
         "where can i find",
         "business hours",
+        "working hours",
         "office address",
         "thank you",
         "how is my",

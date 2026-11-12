@@ -1,87 +1,102 @@
 
-from ticket_classifier import classify_ticket
+import pytest
 
-test_cases = [
-    {
-        "email": "My last payment appears twice on the statement.",
-        "category": "billing",
-        "sentiment": "negative",
-    },
-    {
-        "email": "Where can I download the receipt for April?",
-        "category": "billing",
-        "sentiment": "neutral",
-    },
-    {
-        "email": "The dashboard freezes whenever I generate a PDF.",
-        "category": "technical",
-        "sentiment": "negative",
-    },
-    {
-        "email": "Could you explain how to enable dark mode?",
-        "category": "technical",
-        "sentiment": "neutral",
-    },
-    {
-        "email": "My password reset link has expired.",
-        "category": "account",
-        "sentiment": "negative",
-    },
-    {
-        "email": "Please update the phone number on my profile.",
-        "category": "account",
-        "sentiment": "neutral",
-    },
-    {
-        "email": "Which countries can use your service?",
-        "category": "other",
-        "sentiment": "neutral",
-    },
-    {
-        "email": "Your team was very patient and helpful.",
-        "category": "other",
-        "sentiment": "positive",
-    },
-    {
-        "email": "I am frustrated that the report keeps failing.",
-        "category": "technical",
-        "sentiment": "negative",
-    },
-    {
-        "email": "I would like to know your available subscription plans.",
-        "category": "billing",
-        "sentiment": "neutral",
-    },
-]
+import ticket_classifier
 
-category_correct = 0
-sentiment_correct = 0
 
-for i, case in enumerate(test_cases, start=1):
-    result = classify_ticket(case["email"])
+def mock_laya(monkeypatch, category, sentiment):
+    """Provide controlled Laya predictions."""
 
-    category_ok = result["category"] == case["category"]
-    sentiment_ok = result["sentiment"] == case["sentiment"]
+    def fake_predict(email, questions):
+        return {
+            "answers": {
+                "category": {"choice": category},
+                "sentiment": {"choice": sentiment},
+            }
+        }
 
-    category_correct += category_ok
-    sentiment_correct += sentiment_ok
-
-    print(f"\nTest {i}: {case['email']}")
-    print(
-        f"Category: expected={case['category']}, "
-        f"predicted={result['category']}, "
-        f"{'PASS' if category_ok else 'CHECK'}"
-    )
-    print(
-        f"Sentiment: expected={case['sentiment']}, "
-        f"predicted={result['sentiment']}, "
-        f"{'PASS' if sentiment_ok else 'CHECK'}"
+    monkeypatch.setattr(
+        ticket_classifier.router,
+        "predict",
+        fake_predict,
     )
 
-print("\n--- Evaluation Summary ---")
-print(f"Category accuracy: {category_correct}/{len(test_cases)} "
-      f"({category_correct / len(test_cases) * 100:.1f}%)")
-print(f"Sentiment accuracy: {sentiment_correct}/{len(test_cases)} "
-      f"({sentiment_correct / len(test_cases) * 100:.1f}%)")
 
-    
+@pytest.mark.parametrize(
+    "email, predicted_category, sentiment, expected_category",
+    [
+        (
+            "My last payment appears twice on the statement.",
+            "billing",
+            "negative",
+            "billing",
+        ),
+        (
+            "Where can I download the receipt for April?",
+            "billing",
+            "neutral",
+            "billing",
+        ),
+        (
+            "The dashboard freezes whenever I generate a PDF.",
+            "other",
+            "negative",
+            "technical",
+        ),
+        (
+            "Could you explain how to enable dark mode?",
+            "technical",
+            "neutral",
+            "technical",
+        ),
+        (
+            "My password reset link has expired.",
+            "account",
+            "negative",
+            "account",
+        ),
+        (
+            "Please update the phone number on my profile.",
+            "account",
+            "neutral",
+            "account",
+        ),
+        (
+            "Which countries can use your service?",
+            "other",
+            "neutral",
+            "other",
+        ),
+        (
+            "Your team was very patient and helpful.",
+            "other",
+            "positive",
+            "other",
+        ),
+        (
+            "I am frustrated that the report keeps failing.",
+            "other",
+            "negative",
+            "technical",
+        ),
+        (
+            "I would like to know your available subscription plans.",
+            "billing",
+            "neutral",
+            "billing",
+        ),
+    ],
+)
+def test_extended_classification(
+    monkeypatch,
+    email,
+    predicted_category,
+    sentiment,
+    expected_category,
+):
+    mock_laya(monkeypatch, predicted_category, sentiment)
+
+    result = ticket_classifier.classify_ticket(email)
+
+    assert result["category"] == expected_category
+    assert result["sentiment"] == sentiment

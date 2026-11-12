@@ -1,35 +1,85 @@
 
-from ticket_classifier import classify_ticket
+import pytest
 
-test_emails = [
-    {
-        "name": "Billing complaint",
-        "email": "I was charged twice for my monthly subscription. Please check this.",
-    },
-    {
-        "name": "Technical issue",
-        "email": "The application crashes every time I try to export a report.",
-    },
-    {
-        "name": "Account issue",
-        "email": "I cannot log in even after resetting my password.",
-    },
-    {
-        "name": "General inquiry",
-        "email": "What are your customer support working hours?",
-    },
-    {
-        "name": "Positive feedback",
-        "email": "Thank you for your help. The issue is resolved and everything works perfectly.",
-    },
-]
+import ticket_classifier
 
-for ticket in test_emails:
-    print(f"\n--- {ticket['name']} ---")
-    print("Email:", ticket["email"])
 
-    try:
-        prediction = classify_ticket(ticket["email"])
-        print("Prediction:", prediction)
-    except Exception as error:
-        print("Error:", error)
+def mock_laya(monkeypatch, category, sentiment):
+    """Mock Laya predictions to make tests predictable."""
+
+    def fake_predict(email, questions):
+        return {
+            "answers": {
+                "category": {"choice": category},
+                "sentiment": {"choice": sentiment},
+            }
+        }
+
+    monkeypatch.setattr(
+        ticket_classifier.router,
+        "predict",
+        fake_predict,
+    )
+
+
+@pytest.mark.parametrize(
+    "email, predicted_category, sentiment, expected_category, expected_urgency",
+    [
+        (
+            "I was charged twice for my subscription.",
+            "billing",
+            "negative",
+            "billing",
+            "medium",
+        ),
+        (
+            "The application crashes every time I export a report.",
+            "other",
+            "negative",
+            "technical",
+            "medium",
+        ),
+        (
+            "I cannot log in after resetting my password.",
+            "account",
+            "negative",
+            "account",
+            "medium",
+        ),
+        (
+            "What are your customer support working hours?",
+            "other",
+            "neutral",
+            "other",
+            "low",
+        ),
+        (
+            "Thank you for your help. Everything works perfectly.",
+            "other",
+            "positive",
+            "other",
+            "low",
+        ),
+    ],
+)
+def test_classify_ticket(
+    monkeypatch,
+    email,
+    predicted_category,
+    sentiment,
+    expected_category,
+    expected_urgency,
+):
+    mock_laya(monkeypatch, predicted_category, sentiment)
+
+    result = ticket_classifier.classify_ticket(email)
+
+    assert result["category"] == expected_category
+    assert result["urgency"] == expected_urgency
+    assert result["sentiment"] == sentiment
+
+    assert set(result.keys()) == {
+        "category",
+        "urgency",
+        "sentiment",
+    }
