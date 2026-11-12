@@ -1,4 +1,6 @@
 
+from datetime import datetime
+
 from sqlalchemy import (
     BigInteger,
     CheckConstraint,
@@ -31,6 +33,10 @@ class Ticket(Base):
         CheckConstraint(
             "review_status IN ('pending', 'approved', 'rejected')"
         ),
+        CheckConstraint(
+            "status IN ('new', 'open', 'in_progress', "
+            "'waiting_customer', 'resolved', 'closed')"
+        ),
     )
 
     id: Mapped[int] = mapped_column(
@@ -38,17 +44,53 @@ class Ticket(Base):
         Identity(always=True),
         primary_key=True,
     )
-    email: Mapped[str] = mapped_column(Text, nullable=False)
-    category: Mapped[str] = mapped_column(String(20), nullable=False)
-    urgency: Mapped[str] = mapped_column(String(10), nullable=False)
-    sentiment: Mapped[str] = mapped_column(String(10), nullable=False)
+
+    email: Mapped[str] = mapped_column(
+        Text,
+        nullable=False,
+    )
+
+    category: Mapped[str] = mapped_column(
+        String(20),
+        nullable=False,
+    )
+
+    urgency: Mapped[str] = mapped_column(
+        String(10),
+        nullable=False,
+    )
+
+    sentiment: Mapped[str] = mapped_column(
+        String(10),
+        nullable=False,
+    )
+
     review_status: Mapped[str] = mapped_column(
         String(20),
         nullable=False,
         server_default="pending",
     )
-    created_at: Mapped[object] = mapped_column(
+
+    status: Mapped[str] = mapped_column(
+        String(20),
+        nullable=False,
+        server_default="new",
+    )
+
+    created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
         server_default=func.current_timestamp(),
+    )
+
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.current_timestamp(),
+        onupdate=func.current_timestamp(),
+    )
+
+    resolved_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True),
+        nullable=True,
     )

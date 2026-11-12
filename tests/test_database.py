@@ -22,7 +22,10 @@ def test_tickets_table_matches_model():
         "urgency",
         "sentiment",
         "review_status",
+        "status",
         "created_at",
+        "updated_at",
+        "resolved_at",
     }
 
     assert Ticket.__tablename__ == "tickets"
