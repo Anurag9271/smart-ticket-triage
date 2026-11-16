@@ -121,3 +121,106 @@ def test_empty_ticket_raises_error(generator):
                 "distances": [[]]
             }
         )
+
+
+def test_high_distance_requires_escalation(
+    generator,
+    retrieval_results,
+    monkeypatch
+):
+    """
+    FAQ evidence above the distance threshold
+    must be rejected without calling Ollama.
+    """
+
+    retrieval_results["distances"] = [[0.70]]
+
+    def unexpected_post(*args, **kwargs):
+        pytest.fail("Ollama should not be called.")
+
+    monkeypatch.setattr(
+        "rag.response_generator.httpx.post",
+        unexpected_post
+    )
+
+    result = generator.generate(
+        "I was charged twice.",
+        retrieval_results
+    )
+
+    assert result["status"] == "escalation_required"
+    assert result["draft"] is None
+    assert result["evidence"] == []
+
+
+def test_missing_distance_requires_escalation(
+    generator,
+    retrieval_results,
+    monkeypatch
+):
+    """
+    Evidence without a distance score
+    must not be accepted.
+    """
+
+    retrieval_results["distances"] = [[]]
+
+    def unexpected_post(*args, **kwargs):
+        pytest.fail("Ollama should not be called.")
+
+    monkeypatch.setattr(
+        "rag.response_generator.httpx.post",
+        unexpected_post
+    )
+
+    result = generator.generate(
+        "I was charged twice.",
+        retrieval_results
+    )
+
+    assert result["status"] == "escalation_required"
+    assert result["draft"] is None
+    assert result["evidence"] == []
+
+
+def test_distance_within_threshold_generates_draft(
+    generator,
+    retrieval_results,
+    monkeypatch
+):
+    """
+    Relevant FAQ evidence should be accepted
+    and passed to the response generator.
+    """
+
+    retrieval_results["distances"] = [[0.40]]
+
+    class MockResponse:
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return {
+                "message": {
+                    "content": (
+                        "Please check whether both "
+                        "transactions were completed."
+                    )
+                }
+            }
+
+    monkeypatch.setattr(
+        "rag.response_generator.httpx.post",
+        lambda *args, **kwargs: MockResponse()
+    )
+
+    result = generator.generate(
+        "I was charged twice.",
+        retrieval_results
+    )
+
+    assert result["status"] == "draft_generated"
+    assert result["draft"] is not None
+    assert len(result["evidence"]) == 1
+    assert result["evidence"][0]["distance"] == 0.40
+
