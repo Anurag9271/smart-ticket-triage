@@ -1,0 +1,687 @@
+[
+    {
+        "id": "RAG001",
+        "ticket": "How can I reset my password?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_1"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG002",
+        "ticket": "How can I change my registered email address?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_2"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG003",
+        "ticket": "Why is my account locked?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_3"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG004",
+        "ticket": "How do I enable two-factor authentication?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_4"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG005",
+        "ticket": "How can I update my profile information?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_5"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG006",
+        "ticket": "I did not receive my account verification email. What should I do?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_6"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG007",
+        "ticket": "Why was I charged twice for my subscription?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_1"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG008",
+        "ticket": "How long does a refund take?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_2"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG009",
+        "ticket": "How can I download my subscription invoice?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_3"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG010",
+        "ticket": "What subscription plans are available?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_4"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG011",
+        "ticket": "How can I cancel my subscription?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_5"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG012",
+        "ticket": "Why did my payment fail?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_6"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG013",
+        "ticket": "Why does the application crash when I open it?",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_1"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG014",
+        "ticket": "Why does report export fail?",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_2"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG015",
+        "ticket": "The dashboard is loading slowly. How can I fix it?",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_3"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG016",
+        "ticket": "I cannot log in even though my password is correct. What should I do?",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_4"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG017",
+        "ticket": "Which browsers should I use?",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_5"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG018",
+        "ticket": "What information should I provide when reporting a technical issue?",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_6"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG019",
+        "ticket": "Can I pay using cryptocurrency?",
+        "category": "billing",
+        "relevant_faq_ids": [],
+        "answerable": false
+    },
+    {
+        "id": "RAG020",
+        "ticket": "Can I transfer my subscription to another person?",
+        "category": "billing",
+        "relevant_faq_ids": [],
+        "answerable": false
+    },
+    {
+        "id": "RAG021",
+        "ticket": "Does your application support offline mode?",
+        "category": "technical",
+        "relevant_faq_ids": [],
+        "answerable": false
+    },
+    {
+        "id": "RAG022",
+        "ticket": "Do you offer discounts for annual subscriptions?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_4"
+        ],
+        "answerable": false
+    },
+    {
+        "id": "RAG023",
+        "ticket": "Can I connect my account to an external CRM?",
+        "category": "technical",
+        "relevant_faq_ids": [],
+        "answerable": false
+    },
+    {
+        "id": "RAG024",
+        "ticket": "Can I use a different payment method that is not listed in your billing FAQ?",
+        "category": "billing",
+        "relevant_faq_ids": [],
+        "answerable": false
+    },
+    {
+        "id": "RAG025",
+        "ticket": "I forgot my password and cannot access my account. How can I get back in?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_1"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG026",
+        "ticket": "I want to replace the email address linked to my account.",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_2"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG027",
+        "ticket": "My account has been blocked. Why did this happen?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_3"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG028",
+        "ticket": "How can I add an extra security verification step when logging in?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_4"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG029",
+        "ticket": "Where can I edit my personal profile details?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_5"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG030",
+        "ticket": "I signed up but the verification message never arrived.",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_6"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG031",
+        "ticket": "My bank statement shows two payments for the same subscription.",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_1"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG032",
+        "ticket": "I received a refund confirmation. How many days will it take to reach my account?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_2"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG033",
+        "ticket": "Where can I download a copy of my subscription invoice?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_3"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG034",
+        "ticket": "Can you tell me which subscription packages you currently provide?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_4"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG035",
+        "ticket": "I no longer want to continue my subscription. How do I stop it?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_5"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG036",
+        "ticket": "My card payment was unsuccessful. What could be the reason?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_6"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG037",
+        "ticket": "Every time I launch the software, it suddenly closes.",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_1"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG038",
+        "ticket": "I cannot export my report successfully.",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_2"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG039",
+        "ticket": "The dashboard takes too long to display information.",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_3"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG040",
+        "ticket": "My password is correct, but the system keeps rejecting my login.",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_4"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG041",
+        "ticket": "Is the application compatible with Firefox or Safari?",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_5"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG042",
+        "ticket": "What details do your support engineers need when I report a software problem?",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_6"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG043",
+        "ticket": "Forgot my password. How do I get back in?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_1"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG044",
+        "ticket": "Need to change the email on my account. How?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_2"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG045",
+        "ticket": "Why can't I access my account? It says blocked.",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_3"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG046",
+        "ticket": "How do I turn on 2FA?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_4"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG047",
+        "ticket": "I need to change my profile details.",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_5"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG048",
+        "ticket": "No verification mail received after signing up.",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_6"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG049",
+        "ticket": "You charged me twice for the same plan!",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_1"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG050",
+        "ticket": "When will my refund show up?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_2"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG051",
+        "ticket": "Where do I get my subscription invoice?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_3"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG052",
+        "ticket": "What plans can I choose from?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_4"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG053",
+        "ticket": "Please stop my subscription. I don't need it anymore.",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_5"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG054",
+        "ticket": "My card got declined. What's wrong?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_6"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG055",
+        "ticket": "The app opens and then crashes immediately.",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_1"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG056",
+        "ticket": "Exporting reports isn't working. Can you help?",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_2"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG057",
+        "ticket": "Dashboard is super slow today.",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_3"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG058",
+        "ticket": "Correct password but still can't log in. Any idea why?",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_4"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG059",
+        "ticket": "Does this app work on Chrome and Firefox?",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_5"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG060",
+        "ticket": "What should I send you when reporting a bug?",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_6"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG061",
+        "ticket": "I forgott my passwrd and cant login.",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_1"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG062",
+        "ticket": "How do I chnage my registred email?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_2"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG063",
+        "ticket": "My acount is loked. How can I fix this?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_3"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG064",
+        "ticket": "How to enabel two factor authentification?",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_4"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG065",
+        "ticket": "I cant downlod my subcription invoice.",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_3"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG066",
+        "ticket": "My paymant faild. What shoud I do?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_6"
+        ],
+        "answerable": true
+    },
+    {
+        "id": "RAG067",
+        "ticket": "Something is wrong with my account. Please help.",
+        "category": "account",
+        "relevant_faq_ids": [
+            "account_faq_1",
+            "account_faq_2",
+            "account_faq_3"
+        ],
+        "answerable": false
+    },
+    {
+        "id": "RAG068",
+        "ticket": "I have a problem with my payment.",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_1",
+            "billing_faq_2",
+            "billing_faq_6"
+        ],
+        "answerable": false
+    },
+    {
+        "id": "RAG069",
+        "ticket": "The application is not working properly.",
+        "category": "technical",
+        "relevant_faq_ids": [
+            "technical_faq_1",
+            "technical_faq_2",
+            "technical_faq_3"
+        ],
+        "answerable": false
+    },
+    {
+        "id": "RAG070",
+        "ticket": "I cannot access something. Can you fix it?",
+        "category": "technical",
+        "relevant_faq_ids": [],
+        "answerable": false
+    },
+    {
+        "id": "RAG071",
+        "ticket": "My subscription has an issue. What should I do?",
+        "category": "billing",
+        "relevant_faq_ids": [
+            "billing_faq_1",
+            "billing_faq_2",
+            "billing_faq_5",
+            "billing_faq_6"
+        ],
+        "answerable": false
+    },
+    {
+        "id": "RAG072",
+        "ticket": "I am facing an error. Please resolve it.",
+        "category": "technical",
+        "relevant_faq_ids": [],
+        "answerable": false
+    },
+    {
+        "id": "RAG073",
+        "ticket": "Can I integrate NovaDesk with Salesforce?",
+        "category": "technical",
+        "relevant_faq_ids": [],
+        "answerable": false
+    },
+    {
+        "id": "RAG074",
+        "ticket": "Does NovaDesk provide a public API for developers?",
+        "category": "technical",
+        "relevant_faq_ids": [],
+        "answerable": false
+    },
+    {
+        "id": "RAG075",
+        "ticket": "Can I permanently delete all my account data?",
+        "category": "account",
+        "relevant_faq_ids": [],
+        "answerable": false
+    },
+    {
+        "id": "RAG076",
+        "ticket": "Can I share one subscription with my family members?",
+        "category": "billing",
+        "relevant_faq_ids": [],
+        "answerable": false
+    },
+    {
+        "id": "RAG077",
+        "ticket": "Does the application support biometric login?",
+        "category": "account",
+        "relevant_faq_ids": [],
+        "answerable": false
+    },
+    {
+        "id": "RAG078",
+        "ticket": "Can I import customer records in bulk from an Excel file?",
+        "category": "technical",
+        "relevant_faq_ids": [],
+        "answerable": false
+    }
+]
